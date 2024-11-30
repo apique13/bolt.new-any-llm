@@ -1,5 +1,18 @@
 [![Bolt.new: AI-Powered Full-Stack Web Development in the Browser](./public/social_preview_index.jpg)](https://bolt.new)
 
+# Apique fork
+
+This is too slow even with GPU and the files are not produced (I guess it's because the OPENAI API is not fully implemented by llama.cpp) 
+Anyway, to run it :
+- install cuda following https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&Distribution=WSL-Ubuntu&target_version=2.0&target_type=deb_local (I use Linux in WSL)
+- Put a gguf model into the models directory (and change the LLAMA_ARG_MODEL property in docker-compose.yaml)
+- sudo npm run dockerbuild
+- sudo docker-compose --profile development up
+
+Then connect with chrome on http://localhost:5173
+You can also connect to http://localhost:8080 for using llama.cpp
+The local API key is APIKEYFORLOCALLLAMACPP
+
 # Bolt.new Fork by Cole Medin - oTToDev
 
 This fork of Bolt.new (oTToDev) allows you to choose the LLM that you use for each prompt! Currently, you can use OpenAI, Anthropic, Ollama, OpenRouter, Gemini, LMStudio, Mistral, xAI, HuggingFace, DeepSeek, or Groq models - and it is easily extended to use any other model supported by the Vercel AI SDK! See the instructions below for running this locally and extending it to include more models.
