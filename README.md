@@ -1,9 +1,10 @@
 [![Bolt.new: AI-Powered Full-Stack Web Development in the Browser](./public/social_preview_index.jpg)](https://bolt.new)
 
-# Apique fork
+# Bolt.new Fork by apique13
 
 This fork allow to run the Bolt.new fork with an integrated ollama server using Cuda and the qwen2.5-code:7b model.
-It downloads the model and changes automatically the context size
+It downloads the model and changes automatically the context size.
+I removed the "production" profile which doesn't work well in my case and may be confused for users.
 
 To run it :
 - install cuda following https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&Distribution=WSL-Ubuntu&target_version=2.0&target_type=deb_local (I use Linux in WSL)
