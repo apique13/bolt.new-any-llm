@@ -2,16 +2,17 @@
 
 # Apique fork
 
-This is too slow even with GPU and the files are not produced (I guess it's because the OPENAI API is not fully implemented by llama.cpp) 
-Anyway, to run it :
-- install cuda following https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&Distribution=WSL-Ubuntu&target_version=2.0&target_type=deb_local (I use Linux in WSL)
-- Put a gguf model into the models directory (and change the LLAMA_ARG_MODEL property in docker-compose.yaml)
-- sudo npm run dockerbuild
-- sudo docker-compose --profile development up
+This fork allow to run the Bolt.new fork with an integrated ollama server using Cuda and the qwen2.5-code:7b model.
+It downloads the model and changes automatically the context size
 
-Then connect with chrome on http://localhost:5173
-You can also connect to http://localhost:8080 for using llama.cpp
-The local API key is APIKEYFORLOCALLLAMACPP
+To run it :
+- install cuda following https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&Distribution=WSL-Ubuntu&target_version=2.0&target_type=deb_local (I use Linux in WSL)
+- sudo npm run dockerbuild
+- sudo docker-compose up
+
+The ollama files are stored in ollama-data folder, so it won't download the model on each startup.
+
+Then connect with Chrome on http://localhost:5173 and select Ollama with the qwen2.5-code-large:7b context
 
 # Bolt.new Fork by Cole Medin - oTToDev
 
