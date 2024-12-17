@@ -1,5 +1,20 @@
 [![bolt.diy: AI-Powered Full-Stack Web Development in the Browser](./public/social_preview_index.jpg)](https://bolt.diy)
 
+# Bolt.new Fork by apique13
+
+This fork allow to run the Bolt.new fork with an integrated ollama server using Cuda and the qwen2.5-code:7b model.
+It downloads the model and changes automatically the context size.
+I removed the "production" profile which doesn't work well in my case and may be confused for users.
+
+To run it :
+- install cuda following https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&Distribution=WSL-Ubuntu&target_version=2.0&target_type=deb_local (I use Linux in WSL)
+- sudo npm run dockerbuild
+- sudo docker-compose up
+
+The ollama files are stored in ollama-data folder, so it won't download the model on each startup.
+
+Then connect with Chrome on http://localhost:5173 and select Ollama with the qwen2.5-code-large:7b context
+
 # bolt.diy (Previously oTToDev)
 
 Welcome to bolt.diy, the official open source version of Bolt.new (previously known as oTToDev and bolt.new ANY LLM), which allows you to choose the LLM that you use for each prompt! Currently, you can use OpenAI, Anthropic, Ollama, OpenRouter, Gemini, LMStudio, Mistral, xAI, HuggingFace, DeepSeek, or Groq models - and it is easily extended to use any other model supported by the Vercel AI SDK! See the instructions below for running this locally and extending it to include more models.
