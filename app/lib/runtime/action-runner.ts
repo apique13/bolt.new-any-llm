@@ -84,11 +84,11 @@ export class ActionRunner {
     }
 
     if (action.executed) {
-      return;
+      return; // No return value here
     }
 
     if (isStreaming && action.type !== 'file') {
-      return;
+      return; // No return value here
     }
 
     this.#updateAction(actionId, { ...action, ...data.action, executed: !isStreaming });
@@ -100,7 +100,10 @@ export class ActionRunner {
       .catch((error) => {
         console.error('Action failed:', error);
       });
-      return this.#currentExecutionPromise;
+
+    await this.#currentExecutionPromise;
+
+    return;
   }
 
   async #executeAction(actionId: string, isStreaming: boolean = false) {
@@ -199,8 +202,9 @@ export class ActionRunner {
     }
 
     const webcontainer = await this.#webcontainer;
+    const relativePath = nodePath.relative(webcontainer.workdir, action.filePath);
 
-    let folder = nodePath.dirname(action.filePath);
+    let folder = nodePath.dirname(relativePath);
 
     // remove trailing slashes
     folder = folder.replace(/\/+$/g, '');
@@ -215,8 +219,8 @@ export class ActionRunner {
     }
 
     try {
-      await webcontainer.fs.writeFile(action.filePath, action.content);
-      logger.debug(`File written ${action.filePath}`);
+      await webcontainer.fs.writeFile(relativePath, action.content);
+      logger.debug(`File written ${relativePath}`);
     } catch (error) {
       logger.error('Failed to write file\n\n', error);
     }
